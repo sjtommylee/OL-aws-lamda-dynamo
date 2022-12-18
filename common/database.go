@@ -1,17 +1,31 @@
 package common
 
 import (
-	"database/sql"
+	"fmt"
 
 	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-func Init() (*sql.DB, error) {
-	connStr := "user=postgres dbname=go-db sslmode=verify-full"
-	driver := "postgres"
-	db, err := sql.Open(driver, connStr)
+type Database struct {
+	*gorm.DB
+}
+
+var DB *gorm.DB
+
+func Init() *gorm.DB {
+	dsn := "host=localhost user=postgres password=1234 port=1337 dbname=go-db sslmode=verify-full"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return nil, err
+		fmt.Println("db err: (Init) ", err)
 	}
-	return db, nil
+
+	DB = db
+	fmt.Println(DB)
+	return DB
+}
+
+func GetDB() *gorm.DB {
+	return DB
 }
