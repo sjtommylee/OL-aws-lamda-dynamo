@@ -15,7 +15,7 @@ type Database struct {
 var DB *gorm.DB
 
 func Init() *gorm.DB {
-	dsn := "host=localhost user=postgres password=1234 port=1337 dbname=go-db sslmode=verify-full"
+	dsn := "postgres://postgres:1234@localhost:5432/postgres"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println("db err: (Init) ", err)

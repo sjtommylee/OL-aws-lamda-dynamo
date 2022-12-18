@@ -10,7 +10,7 @@ import (
 )
 
 func Migrate(db *gorm.DB) {
-	users.AutoMigrateDB()
+	users.AutoMigrate()
 }
 
 func main() {
@@ -22,5 +22,5 @@ func main() {
 
 	r := gin.Default()
 	r.GET("/api")
-	r.Run("localhost:9090")
+	r.Run(":1337")
 }

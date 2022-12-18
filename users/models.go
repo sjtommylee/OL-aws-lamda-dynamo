@@ -14,7 +14,7 @@ type User struct {
 	HashedPassword string
 }
 
-func AutoMigrateDB() {
+func AutoMigrate() {
 	db := common.GetDB()
 	db.AutoMigrate(&User{})
 }

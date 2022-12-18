@@ -3,7 +3,7 @@ services:
   go-db:
     image: postgres:13
     ports:
-      - "6543:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
