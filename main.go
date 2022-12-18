@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-service/common"
+	"go-service/posts"
 	"go-service/users"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,7 @@ import (
 
 func Migrate(db *gorm.DB) {
 	users.AutoMigrate()
+	posts.AutoMigrate()
 }
 
 func main() {

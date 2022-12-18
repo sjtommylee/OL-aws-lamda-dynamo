@@ -1,12 +1,13 @@
 package users
 
 import (
+	"fmt"
 	"go-service/common"
 
 	"gorm.io/gorm"
 )
 
-type User struct {
+type UserModel struct {
 	gorm.Model
 	ID             uint
 	Fullname       string
@@ -15,6 +16,8 @@ type User struct {
 }
 
 func AutoMigrate() {
+	fmt.Println("User Migration")
+	fmt.Println("User Model", UserModel{})
 	db := common.GetDB()
-	db.AutoMigrate(&User{})
+	db.AutoMigrate(&UserModel{})
 }
