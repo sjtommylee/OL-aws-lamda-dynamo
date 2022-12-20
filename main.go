@@ -25,5 +25,6 @@ func main() {
 	r := gin.Default()
 	api := r.Group("/api")
 	posts.PostRegister(api)
+	users.UserRegister(api)
 	r.Run(":1337")
 }
