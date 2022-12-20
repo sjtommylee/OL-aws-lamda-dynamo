@@ -3,18 +3,19 @@ package posts
 import (
 	"fmt"
 	"go-service/common"
+	"time"
 
 	"gorm.io/gorm"
 )
 
 type PostModel struct {
 	gorm.Model
-	Id          string
+	ID          string `gorm:"unique_index"`
 	Title       string
-	Description string
-	Body        string
+	Description string ``
+	Body        string ``
 	Author      string
-	DateCreated string
+	DateCreated time.Time `json:"date_created" gorm:"column:date_created" sql:"DEFAULT:current_timestamp"`
 }
 
 func AutoMigrate() {

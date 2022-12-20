@@ -9,10 +9,10 @@ import (
 
 type UserModel struct {
 	gorm.Model
-	ID             uint
-	Fullname       string
-	Email          string
-	HashedPassword string
+	ID             uint   `gorm:"primary_key"`
+	Fullname       string `gorm:"column:fullname"`
+	Email          string `gorm:"column:email"`
+	HashedPassword string `gorm:"column:hashed_password"`
 }
 
 func AutoMigrate() {
