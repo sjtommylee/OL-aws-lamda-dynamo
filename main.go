@@ -23,6 +23,7 @@ func main() {
 	// defer db.Close()
 
 	r := gin.Default()
-	r.GET("/api")
+	api := r.Group("/api")
+	posts.PostRegister(api)
 	r.Run(":1337")
 }
