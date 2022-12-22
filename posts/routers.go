@@ -1,7 +1,10 @@
 package posts
 
 import (
+	"errors"
 	"fmt"
+	"go-service/common"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,7 +13,7 @@ var err error
 
 func PostRegister(router *gin.RouterGroup) {
 
-	router.GET("/posts", indexAll)
+	// router.GET("/posts", indexAll)
 	router.GET("/posts/:id", index)
 	router.DELETE("/posts/:id", delete)
 	router.PUT("/posts/:id", update)
@@ -18,14 +21,15 @@ func PostRegister(router *gin.RouterGroup) {
 }
 
 func indexAll(c *gin.Context) {
-	// var posts []PostModel
+	// author := c.Query("author")
+	// offset := c.Query("offset")
+	postModels, err := FindMany()
 	if err != nil {
-		fmt.Println("post get all err block")
-	} else {
-		c.JSON(200, gin.H{
-			"message": "get all",
-		})
+		c.JSON(http.StatusNotFound, common.NewError("articles", errors.New("Invalid param")))
+		return
 	}
+	serializer := PostsSerializer{c, postModels}
+	c.JSON(http.StatusOK, gin.H{"articles": serializer, "articlesCount": ""})
 }
 
 func index(c *gin.Context) {
