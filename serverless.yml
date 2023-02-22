@@ -1,0 +1,27 @@
+# service name
+service: app
+
+# version contraint
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  stage: dev
+  region: us-east-1
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+# functions: 
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        KeySchema:
+          - AttributeName: Username
+            KeyType: HASH
