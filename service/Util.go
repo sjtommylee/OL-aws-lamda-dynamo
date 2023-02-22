@@ -51,3 +51,6 @@ func Integer64Value(value int64) *dynamodb.AttributeValue {
 		N: aws.String(strconv.FormatInt(value, 10)),
 	}
 }
+
+//TODO: Blob value?
+//TODO: The ReverseIndexInt64 function takes a slice of int64 values as input and returns a map that maps each value in the input slice to its corresponding index in the slice.
