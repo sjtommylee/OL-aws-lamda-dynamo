@@ -40,3 +40,8 @@ resources:
         KeySchema:
           - AttributeName: Username
             KeyType: HASH
+
+plugins:
+  - serverless-offline
+
+
