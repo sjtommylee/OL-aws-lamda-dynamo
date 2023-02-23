@@ -16,7 +16,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	fmt.Println("Received body: ", request.Body)
 
 	response := Response{
-		Body: request.Body,
+		Body: "ping",
 	}
 	// return events.APIGatewayProxyResponse{Body: request.Body, StatusCode: 200}, nil
 	return util.NewSuccessresponse(200, response)

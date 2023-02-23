@@ -6,8 +6,13 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  stage: dev
+  # runtime: go1.x
+  stage: local
   region: us-east-1
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
 
 package:
   exclude:
