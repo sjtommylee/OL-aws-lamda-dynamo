@@ -2,11 +2,11 @@
 service: app
 
 # version contraint
-frameworkVersion: '3'
+frameworkVersion: ^3.22.0
 
 provider:
   name: aws
-  # runtime: go1.x
+  runtime: go1.x
   stage: local
   region: us-east-1
 
@@ -20,7 +20,17 @@ package:
   include:
     - ./bin/**
 
-# functions: 
+functions: 
+  ping:
+    handler: bin/ping
+    package:
+      include:
+        - ./bin/ping
+    events:
+      - http:
+          path: /ping
+          method: get
+  
 
 resources:
   Resources:
