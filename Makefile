@@ -7,7 +7,8 @@ clean:
 build:
 	./gobuild.sh
 
-start: build
+# TODO: for some reason, the user docker flag doesn't seem to work
+start:  build
 	sls offline --useDocker start  --host 0.0.0.0
 
 format:
