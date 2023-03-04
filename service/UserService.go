@@ -14,5 +14,5 @@ func PutUser(user model.User) error {
 func GetCurrentuser(auth string) (*model.User, string, error) {
 	// username, token, err := model.VerifyAuth(auth)
 	// return &user, token, nil
-	return nil
+	return nil, "", nil
 }
